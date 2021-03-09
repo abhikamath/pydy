@@ -554,7 +554,7 @@ Gyrostat :math:`G_2`
 .. jupyter-execute::
 
     Fstar_G2 = -M2 * N_a_C
-    Fstar_G2
+    sm.pprint(Fstar_G2, wrap_line=True)
 
 :math:`\rightarrow {T_G}^* \overset{\Delta}{=} -[\alpha_A \cdot I_G + {\omega_r}^A \times (I_G \cdot {\omega_r}^A)]`
 
@@ -573,7 +573,7 @@ Gyrostat :math:`G_2`
 .. jupyter-execute::
 
     Fstar_2_G2_R = V_2_C.dot(Fstar_G2) + w_2_A1.dot(Tstar_G2).subs(soldict)
-    Fstar_2_G2_R.subs({N_w_A2.dt(N).subs(soldict).dot(A2.z): alpha__A2})
+    sm.pprint(Fstar_2_G2_R.subs({N_w_A2.dt(N).subs(soldict).dot(A2.z): alpha__A2}), wrap_line=True)
 
 :math:`\rightarrow (F_r^*)_{GI} = -J\{\omega_r^A \cdot [\ddot{q_k} g_1 + \dot{q_k} (\omega_3^A g_2 - \omega_2^A g_3)] + C_{kr} (\dot{\omega}_1^A + \ddot{q_k}) \} \qquad (r=1,...,n-m)`
 
@@ -669,12 +669,12 @@ Generalized Inertia Forces
 .. jupyter-execute::
 
     Fstar_1 = Fstar_1_G1 + Fstar_1_G2 + Fstar_1_P
-    Fstar_1.subs(soldict).simplify()
+    sm.pprint(Fstar_1.subs(soldict).simplify(), wrap_line=True)
 
 .. jupyter-execute::
 
     Fstar_2 = Fstar_2_G1 + Fstar_2_G2 + Fstar_2_P
-    Fstar_2.subs(soldict).simplify()
+    sm.pprint(Fstar_2.subs(soldict).simplify(), wrap_line=True)
 
 Velocity of material ejected at :math:`P` relative to
 :math:`A_2 \rightarrow -C(t)g_3^{'}`
@@ -713,22 +713,22 @@ active forces
 .. jupyter-execute::
 
     kane_1 = Fstar_1.simplify() + Fprime_1.simplify()
-    kane_1.subs(soldict).simplify()
+    sm.pprint(kane_1.subs(soldict).simplify(), wrap_line=True)
 
 .. jupyter-execute::
 
     kane_2 = Fstar_2 + Fprime_2
-    kane_2.subs(soldict).simplify()
+    sm.pprint(kane_2.subs(soldict).simplify(), wrap_line=True)
 
 .. jupyter-execute::
 
     kane_1_eq = sm.Eq(kane_1.simplify().subs(soldict).simplify().subs(u).simplify(), 0)
-    kane_1_eq
+    sm.pprint(kane_1_eq, wrap_line=True)
 
 .. jupyter-execute::
 
     kane_2_eq = sm.Eq(kane_2.simplify().subs(soldict).simplify().subs(u).simplify(), 0)
-    kane_2_eq
+    sm.pprint(kane_2_eq, wrap_line=True)
 
 References
 ----------
